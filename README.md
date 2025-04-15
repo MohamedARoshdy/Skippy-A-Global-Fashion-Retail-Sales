@@ -17,7 +17,7 @@ The architecture follows the **Lambda Architecture** to handle both batch and re
 
 This project follows the **Lambda Architecture**, blending Batch and Real-time processing.
 
-![Data Pipeline](./DashBoardBatch1.png) 
+![Data Pipeline](./pipline.jpg) 
 
 ---
 
