@@ -1,6 +1,8 @@
 # 🧵 Skippy GFR - Global Fashion Retail Sales Analytics
 This project implements a complete **Data Engineering** solution for a multinational fashion retailer, combining both **Batch** and **Streaming** architectures. The solution utilizes a synthetic dataset with over **4 million transactions**.
 
+<img src="./logo.png" width="100" height="100" style="float: right; margin-left: 15px;">
+
 The architecture follows the **Lambda Architecture** to handle both batch and real-time data processing, offering a scalable and fault-tolerant system for processing large volumes of transactional data. The system is designed to handle data from multiple regions and currencies, providing valuable insights into sales trends, customer behavior, and marketing effectiveness.
 
 ## 📊 Dataset Summary
