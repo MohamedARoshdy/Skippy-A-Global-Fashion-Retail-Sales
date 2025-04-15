@@ -38,6 +38,8 @@ This project follows the **Lambda Architecture**, blending Batch and Real-time p
 ![Batch Dashboard](./DashBoardBatch1.png) 
 
 ---
+![Batch Dashboard](./DashBoardBatch2.png) 
+
 
 ## ⚡ Streaming Layer
 
