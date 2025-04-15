@@ -1,4 +1,4 @@
-# 🧵 Skippy GFR - Global Fashion Retail Sales Analytics
+<img src="./logo.png" width="100" height="100" style="float: right; margin-left: 15px;"> # 🧵 Skippy GFR - Global Fashion Retail Sales Analytics
 This project implements a complete **Data Engineering** solution for a multinational fashion retailer, combining both **Batch** and **Streaming** architectures. The solution utilizes a synthetic dataset with over **4 million transactions**.
 
 <img src="./logo.png" width="100" height="100" style="float: right; margin-left: 15px;">
