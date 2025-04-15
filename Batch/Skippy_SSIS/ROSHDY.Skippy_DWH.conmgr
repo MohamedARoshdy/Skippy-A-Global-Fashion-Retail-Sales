@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ROSHDY.Skippy_DWH"
+  DTS:DTSID="{130FC716-81DE-4451-ADF1-ABB779E65232}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=ROSHDY;Initial Catalog=Skippy_DWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Skippy_SSIS-{130FC716-81DE-4451-ADF1-ABB779E65232}ROSHDY.Skippy_DWH;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

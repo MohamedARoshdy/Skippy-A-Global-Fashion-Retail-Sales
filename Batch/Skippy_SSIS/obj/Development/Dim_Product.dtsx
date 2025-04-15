@@ -1,0 +1,3218 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/11/2025 9:31:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ROSHDY"
+  DTS:CreatorName="Roshdy\Roshdy"
+  DTS:DTSID="{59DD5278-1986-4335-9956-F52F0152C94C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{233DCEFF-0A22-49E7-BA2C-400DD9C7AE19}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Dim_Product"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{99B94F6B-714A-4729-A89A-5255CC743E82}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Dim_Product"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Dim_Product\DBSource_Dim_Product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DBSource_Dim_Product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT P.[Product ID]
+      ,P.[Category_Subcategory_ID]
+      ,P.[Description PT]
+      ,P.[Description DE]
+      ,P.[Description FR]
+      ,P.[Description ES]
+      ,P.[Description EN]
+      ,P.[Description ZH]
+      ,P.[Color]
+      ,P.[Production Cost]
+	  ,CS.[Category]
+      ,CS.[Sub Category]
+	  ,D.[Discount_ID]
+      ,D.[Start]
+      ,D.[End]
+      ,D.[Discount]
+      ,D.[Description]
+  FROM [Skippy].[dbo].[products] AS P 
+  LEFT OUTER JOIN 
+ [Skippy].[dbo].[category_subcategory] AS CS
+ ON CS.Category_Subcategory_ID = P.Category_Subcategory_ID
+ LEFT OUTER JOIN 
+ [Skippy].[dbo].[discounts] AS D
+ ON 
+ CS.Category_Subcategory_ID = D.Category_Subcategory_ID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Connections[OleDbConnection]"
+                  connectionManagerID="{9465B37F-E52C-4645-BFD2-E16D65C4C1A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ROSHDY.Skippy]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Product ID]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]"
+                      name="Product ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Category_Subcategory_ID]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]"
+                      name="Category_Subcategory_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description PT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description PT]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description PT]"
+                      name="Description PT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description DE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description DE]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description DE]"
+                      name="Description DE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description FR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description FR]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description FR]"
+                      name="Description FR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ES]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description ES]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ES]"
+                      name="Description ES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description EN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description EN]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description EN]"
+                      name="Description EN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ZH]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description ZH]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ZH]"
+                      name="Description ZH"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Production Cost]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Production Cost]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Production Cost]"
+                      name="Production Cost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category]"
+                      name="Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Sub Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Sub Category]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Sub Category]"
+                      name="Sub Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Discount_ID]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]"
+                      name="Discount_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Start]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Start]"
+                      length="10"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Start]"
+                      name="Start"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[End]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[End]"
+                      length="10"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[End]"
+                      name="End"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount]"
+                      name="Discount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Product ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Category_Subcategory_ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category_Subcategory_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description PT]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description PT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description DE]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description DE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description FR]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description FR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description ES]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description ES" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description EN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description EN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description ZH]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description ZH" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="255"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Production Cost]"
+                      dataType="r8"
+                      name="Production Cost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Sub Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sub Category" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Discount_ID]"
+                      dataType="i4"
+                      name="Discount_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Start]"
+                      dataType="wstr"
+                      length="10"
+                      name="Start" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[End]"
+                      dataType="wstr"
+                      length="10"
+                      name="End" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      dataType="numeric"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Product ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Product ID]"
+                      name="Product ID" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Category_Subcategory_ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Category_Subcategory_ID]"
+                      name="Category_Subcategory_ID" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description PT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description PT]"
+                      name="Description PT" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description DE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description DE]"
+                      name="Description DE" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description FR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description FR]"
+                      name="Description FR" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description ES]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description ES]"
+                      name="Description ES" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description EN]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description EN]"
+                      name="Description EN" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description ZH]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description ZH]"
+                      name="Description ZH" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Production Cost]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Production Cost]"
+                      name="Production Cost" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Category]"
+                      name="Category" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Sub Category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Sub Category]"
+                      name="Sub Category" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Discount_ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Discount_ID]"
+                      name="Discount_ID" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Start]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Start]"
+                      name="Start" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[End]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[End]"
+                      name="End" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Output].Columns[SSC]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Output].Columns[SSC]"
+                      name="SSC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbTimeStamp"
+                      description="End_Date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\Derived Column 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\Derived Column 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output].Columns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output].Columns[Start_Date]"
+                      name="Start_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output].Columns[is_current]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output].Columns[is_current]"
+                      name="is_current"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Dim_Product\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{130FC716-81DE-4451-ADF1-ABB779E65232}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ROSHDY.Skippy_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Product ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID_BK]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Product ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Category_Subcategory_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category_Subcategory_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category_subCategory_BK]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category_Subcategory_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Sub Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sub Category"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubCategory]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Sub Category]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description PT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description PT"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name PT]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description PT]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description DE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description DE"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  DE]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description DE]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description FR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description FR"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  FR]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description FR]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description ES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ES"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  ES]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ES]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description EN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description EN"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name EN]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description EN]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description ZH]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ZH"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  ZH]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ZH]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Production Cost]"
+                      cachedDataType="r8"
+                      cachedName="Production Cost"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Production Cost]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Production Cost]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Discount_ID]"
+                      cachedDataType="i4"
+                      cachedName="Discount_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Discount_ID_BK]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Start]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Start"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Start]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[End]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="End"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[End]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSC]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[SSC]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[Discount]"
+                      cachedDataType="numeric"
+                      cachedName="Discount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].Columns[is_current]"
+                      cachedDataType="i1"
+                      cachedName="is_current"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output].Columns[is_current]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID_SK]"
+                      dataType="i8"
+                      name="Product_ID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product_ID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category_subCategory_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category_subCategory_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubCategory]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubCategory" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name PT]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name PT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  DE]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  DE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  FR]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  FR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  ES]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  ES" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name EN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name EN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product name  ZH]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  ZH" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="255"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Production Cost]"
+                      dataType="r8"
+                      name="Production Cost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Discount_ID_BK]"
+                      dataType="i4"
+                      name="Discount_ID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                      dataType="wstr"
+                      length="10"
+                      name="Start" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                      dataType="wstr"
+                      length="10"
+                      name="End" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSC]"
+                      dataType="i4"
+                      name="SSC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="ui1"
+                      name="is_current" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      dataType="numeric"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Product] SET [End_Date] = ? ,is_current=0
+WHERE [Category_subCategory_BK] = ? AND [Discount_ID_BK] = ? AND [Product_ID_BK] = ? AND [End_Date] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Dim_Product\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{130FC716-81DE-4451-ADF1-ABB779E65232}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ROSHDY.Skippy_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].Columns[Category_Subcategory_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category_Subcategory_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].Columns[Discount_ID]"
+                      cachedDataType="i4"
+                      cachedName="Discount_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].Columns[Product ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Output].Columns[End_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Product] SET [Category] = ?,[Color] = ?,[Description] = ?,[Product name  DE] = ?,[Product name  ES] = ?,[Product name  FR] = ?,[Product name  ZH] = ?,[Product name EN] = ?,[Product name PT] = ?,[Production Cost] = ?,[SubCategory] = ? WHERE [Category_subCategory_BK] = ? AND [Discount_ID_BK] = ? AND [Product_ID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Dim_Product\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="{130FC716-81DE-4451-ADF1-ABB779E65232}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ROSHDY.Skippy_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Category_Subcategory_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category_Subcategory_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Discount_ID]"
+                      cachedDataType="i4"
+                      cachedName="Discount_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Description DE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description DE"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description DE]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Description ES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ES"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ES]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Description FR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description FR"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description FR]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Description ZH]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ZH"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ZH]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Description EN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description EN"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description EN]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Description PT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description PT"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description PT]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Product ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Production Cost]"
+                      cachedDataType="r8"
+                      cachedName="Production Cost"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Production Cost]" />
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Sub Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sub Category"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Sub Category]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      dataType="r8"
+                      name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_11">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                      dataType="i4"
+                      name="Param_12">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_13">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Category], [Category_subCategory_BK], [Color], [Description], [Discount], [Discount_ID_BK], [End], [Product name  DE], [Product name  ES], [Product name  FR], [Product name  ZH], [Product name EN], [Product name PT], [Product_ID_BK], [Production Cost], [SSC], [Start], [SubCategory],[Start_Date],[End_Date] FROM [dbo].[Dim_Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[Start_Date] IS NOT NULL AND [End_Date] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{130FC716-81DE-4451-ADF1-ABB779E65232}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ROSHDY.Skippy_DWH]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Category]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Category_Subcategory_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category_Subcategory_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Category_subCategory_BK]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Color]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Color]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Description]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Discount]"
+                      cachedDataType="numeric"
+                      cachedName="Discount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Discount]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Discount_ID]"
+                      cachedDataType="i4"
+                      cachedName="Discount_ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Discount_ID_BK]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[End]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="End"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[End]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[End]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description DE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description DE"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  DE]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description DE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description ES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ES"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  ES]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ES]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description FR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description FR"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  FR]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description FR]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description ZH]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ZH"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  ZH]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ZH]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description EN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description EN"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name EN]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description EN]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description PT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description PT"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name PT]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description PT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Product ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product ID"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product_ID_BK]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Production Cost]"
+                      cachedDataType="r8"
+                      cachedName="Production Cost"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Production Cost]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Production Cost]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[SSC]"
+                      lineageId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Output].Columns[SSC]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Start]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Start"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Start]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Start]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Sub Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sub Category"
+                      externalMetadataColumnId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[SubCategory]"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Sub Category]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Category_subCategory_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category_subCategory_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="255"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Discount]"
+                      dataType="numeric"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Discount_ID_BK]"
+                      dataType="i4"
+                      name="Discount_ID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[End]"
+                      dataType="wstr"
+                      length="10"
+                      name="End" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  DE]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  DE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  ES]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  ES" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  FR]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  FR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name  ZH]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name  ZH" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name EN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name EN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product name PT]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product name PT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Product_ID_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product_ID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Production Cost]"
+                      dataType="r8"
+                      name="Production Cost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[SSC]"
+                      dataType="i4"
+                      name="SSC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Start]"
+                      dataType="wstr"
+                      length="10"
+                      name="Start" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[SubCategory]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubCategory" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Dim_Product\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Product ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product ID"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Product ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Category_Subcategory_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category_Subcategory_ID"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category_Subcategory_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Description PT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description PT"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description PT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description PT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Description DE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description DE"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description DE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description DE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Description FR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description FR"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description FR]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description FR]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Description ES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ES"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ES]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ES]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Description EN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description EN"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description EN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description EN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Description ZH]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ZH"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ZH]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ZH]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Color"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Production Cost]"
+                      cachedDataType="r8"
+                      cachedName="Production Cost"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Production Cost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Production Cost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Sub Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sub Category"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Sub Category]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Sub Category]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Discount_ID]"
+                      cachedDataType="i4"
+                      cachedName="Discount_ID"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Start]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Start"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Start]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Start]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[End]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="End"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[End]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[End]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Discount]"
+                      cachedDataType="numeric"
+                      cachedName="Discount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      lineageId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Output].Columns[SSC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[SSC]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Product ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product ID"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Product ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Category_Subcategory_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category_Subcategory_ID"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category_Subcategory_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Description PT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description PT"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description PT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description PT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Description DE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description DE"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description DE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description DE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Description FR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description FR"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description FR]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description FR]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Description ES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ES"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ES]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ES]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Description EN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description EN"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description EN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description EN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Description ZH]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description ZH"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ZH]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ZH]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Color"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Production Cost]"
+                      cachedDataType="r8"
+                      cachedName="Production Cost"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Production Cost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Production Cost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Sub Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sub Category"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Sub Category]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Sub Category]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Discount_ID]"
+                      cachedDataType="i4"
+                      cachedName="Discount_ID"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Start]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Start"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Start]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Start]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[End]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="End"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[End]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[End]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Discount]"
+                      cachedDataType="numeric"
+                      cachedName="Discount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      lineageId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      lineageId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Output].Columns[SSC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[SSC]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Product ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Product ID]"
+                      name="Product ID" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category_Subcategory_ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category_Subcategory_ID]"
+                      name="Category_Subcategory_ID" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description PT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description PT]"
+                      name="Description PT" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description DE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description DE]"
+                      name="Description DE" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description FR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description FR]"
+                      name="Description FR" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ES]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ES]"
+                      name="Description ES" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description EN]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description EN]"
+                      name="Description EN" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ZH]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description ZH]"
+                      name="Description ZH" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Color]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Production Cost]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Production Cost]"
+                      name="Production Cost" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Category]"
+                      name="Category" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Sub Category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Sub Category]"
+                      name="Sub Category" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount_ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount_ID]"
+                      name="Discount_ID" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Start]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Start]"
+                      name="Start" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[End]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[End]"
+                      name="End" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Discount]"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[SSC]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1].Columns[SSC]"
+                      name="SSC" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Dim_Product.Paths[Changing Attribute Updates Output]"
+              endId="Package\DFT_Dim_Product\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[Derived Column Output]"
+              endId="Package\DFT_Dim_Product\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Dim_Product\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[Derived Column Output1]"
+              endId="Package\DFT_Dim_Product\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Dim_Product\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[Derived Column Output2]"
+              endId="Package\DFT_Dim_Product\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Dim_Product\Derived Column 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[Historical Attribute Inserts Output]"
+              endId="Package\DFT_Dim_Product\Derived Column 1.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[New Output]"
+              endId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\DFT_Dim_Product\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[OLE DB Command Output]"
+              endId="Package\DFT_Dim_Product\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\DFT_Dim_Product\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Dim_Product\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Dim_Product\DBSource_Dim_Product.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Dim_Product.Paths[Union All Output 1]"
+              endId="Package\DFT_Dim_Product\Derived Column 2.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\DFT_Dim_Product\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\DFT_Dim_Product"
+          TopLeft="271.428572006371,14.5294117519703" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Dim_Product">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\DFT_Dim_Product\DBSource_Dim_Product"
+          TopLeft="135.7,5.49999999999995" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\DFT_Dim_Product\Slowly Changing Dimension"
+          TopLeft="126.9,208.7" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_Dim_Product\Derived Column"
+          TopLeft="154.5,107.1" />
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[OLE DB Source Output]"
+          TopLeft="230.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[Derived Column Output]"
+          TopLeft="230.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_Dim_Product\Derived Column 1"
+          TopLeft="7.70000000000003,310.3" />
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[Historical Attribute Inserts Output]"
+          TopLeft="180.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-92,59.9999999999999"
+              Start="0,0"
+              End="-92,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="-4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="-88,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-88,20.506329113924"
+                    Point2="-92,20.506329113924"
+                    Point3="-92,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="-92,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-121.05638671875,25.506329113924,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DFT_Dim_Product\OLE DB Command"
+          TopLeft="5.50000000000003,411.9" />
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[Derived Column Output1]"
+          TopLeft="88.4,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DFT_Dim_Product\Union All"
+          TopLeft="170.9,513.5" />
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[New Output]"
+          TopLeft="230.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.6666666666667,263.2"
+              Start="0,0"
+              End="18.6666666666667,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,151.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,151.842105263158"
+                    Point2="0,155.842105263158"
+                    Point3="4,155.842105263158" />
+                  <mssgle:LineSegment
+                    End="14.6666666666667,155.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.6666666666667,155.842105263158"
+                    Point2="18.6666666666667,155.842105263158"
+                    Point3="18.6666666666667,159.842105263158" />
+                  <mssgle:LineSegment
+                    End="18.6666666666667,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.7580533854167,160.842105263158,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[OLE DB Command Output]"
+          TopLeft="87.9,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="124.333333333333,59.9999999999999"
+              Start="0,0"
+              End="124.333333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="120.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="124.333333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_Dim_Product\Derived Column 2"
+          TopLeft="149.7,615.099999999999" />
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[Union All Output 1]"
+          TopLeft="230.9,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_Dim_Product\Insert Destination"
+          TopLeft="149.7,716.699999999999" />
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[Derived Column Output2]"
+          TopLeft="230.9,656.699999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\DFT_Dim_Product\OLE DB Command 1"
+          TopLeft="291.7,310.3" />
+        <EdgeLayout
+          Id="Package\DFT_Dim_Product.Paths[Changing Attribute Updates Output]"
+          TopLeft="280.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,59.9999999999999"
+              Start="0,0"
+              End="98,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="94,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94,20.506329113924"
+                    Point2="98,20.506329113924"
+                    Point3="98,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="98,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-29.53390625,25.506329113924,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Dim_Product\DBSource_Dim_Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Dim_Product\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{130FC716-81DE-4451-ADF1-ABB779E65232}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Product]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Category&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Category_Subcategory_ID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Category_subCategory_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Color]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Color&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Description&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Discount&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Discount_ID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Discount_ID_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[End]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;End&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description DE]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Product name  DE&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ES]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Product name  ES&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description FR]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Product name  FR&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description ZH]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Product name  ZH&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description EN]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Product name EN&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Description PT]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Product name PT&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Product ID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Product_ID_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Production Cost]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Production Cost&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Derived Column.Outputs[Derived Column Output].Columns[SSC]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;SSC&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Start]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Start&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DBSource_Dim_Product.Outputs[OLE DB Source Output].Columns[Sub Category]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;SubCategory&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 2&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;Start_Date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;End_Date&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Dim_Product\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
